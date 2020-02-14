@@ -6,7 +6,7 @@
 | Build server    | Platform       | Status      |
 |-----------------|----------------|-------------|
 | Azure CI Pipelines  | All            |![](https://dev.azure.com/fsefacan/NumberToWords/_apis/build/status/sefacan.NumberToWords?branchName=master) |
-| Github Actions  | All            |![](https://github.com/sefacan/NumberToWords/workflows/ASP.NET%20Core%20CI/badge.svg) |
+| Github Actions  | All            |![](https://github.com/sefacan/NumberToWords/workflows/.NET%20Core%20CI/badge.svg) |
 | Travis CI       | Linux  |![](https://travis-ci.org/sefacan/NumberToWords.svg?branch=master) |
 
 
