@@ -1,0 +1,12 @@
+language: csharp
+mono: none
+dotnet: 3.1.100
+
+dist: xenial
+os: linux
+
+script:
+- dotnet test
+- dotnet build ./NumberToWords.sln -c Release
+- dotnet pack -c Release --no-build -o ./packages
+- dotnet nuget push ./packages/NumberToWords.*.nupkg --skip-duplicate --api-key $NUGETKEY --source https://api.nuget.org/v3/index.json

@@ -153,7 +153,7 @@ namespace NumberToWords.Transformers
                 groupIndex--;
             }
 
-            return result;
+            return result.Trim();
         }
 
         public string ToCurrencyWords(decimal currency, string currencyCode)
@@ -166,15 +166,7 @@ namespace NumberToWords.Transformers
 
             var currencyName = currencyNames[currencyCode];
             string result = ToWords((int)currency).Trim();
-
-            if (currency != 1m)
-            {
-                result += $"{wordSeparator}{currencyName.Value}";
-            }
-            else
-            {
-                result += $"{wordSeparator}{currencyName.Key}";
-            }
+            result += $"{wordSeparator}{currencyName.Key}";
 
             if (hasFraction)
             {
@@ -191,7 +183,7 @@ namespace NumberToWords.Transformers
                 }
             }
 
-            return result;
+            return result.Trim();
         }
     }
 }
