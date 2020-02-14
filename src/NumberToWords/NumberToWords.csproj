@@ -1,5 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>.Net Standard 2.1 package for converting number or currency values to Turkish words</Description>
+    <Version>1.0.0</Version>
+    <AssemblyName>NumberToWords</AssemblyName>
+    <RootNamespace>NumberToWords</RootNamespace>
+    <Copyright>2019 dotnetanywhere.com</Copyright>
+    <RepositoryUrl>https://github.com/sefacan/NumberToWords</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/sefacan/NumberToWords</PackageProjectUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Authors>Sefa Can</Authors>
+    <Company>dotnetanywhere.com</Company>
   </PropertyGroup>
 </Project>
