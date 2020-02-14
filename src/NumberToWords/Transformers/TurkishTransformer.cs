@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace NumberToWords.Transformers
@@ -106,23 +106,90 @@ namespace NumberToWords.Transformers
         public string ToWords(int value)
         {
             string result = string.Empty;
+            string num = value.ToString();
 
             if (value == 0)
             {
                 return digits[0];
             }
 
-            string strNumber = value.ToString();
-            if (strNumber.Substring(0, 1) == "-")
+            if (num.Substring(0, 1) == "-")
             {
                 result = $"{minus}{wordSeparator}";
-                value = int.Parse(strNumber.Substring(1));
+                num = num.Substring(1);
             }
 
-            strNumber = Regex.Replace(strNumber, "/^0+/", string.Empty);
+            num = Regex.Replace(num, "/^0+/", string.Empty);
 
-            if (strNumber.Length % 3 != 0)
-                strNumber = strNumber.PadLeft(strNumber.Length + (3 - (strNumber.Length % 3)), '0');
+            if (num.Length % 3 != 0)
+                num = num.PadLeft(num.Length + (3 - (num.Length % 3)), '0');
+
+            string[] groups = new string[num.Length / 3];
+            for (int i = 0; i < num.Length / 3; i++)
+            {
+                groups[i] = num.Substring(i * 3, 3);
+            }
+
+            int index = 0;
+            int groupIndex = groups.Length - 1;
+            foreach (var group in groups)
+            {
+                if (int.Parse(group[0].ToString()) > 1)
+                    result += digits[int.Parse(group[0].ToString())] + wordSeparator;
+
+                if (int.Parse(group[0].ToString()) > 0)
+                    result += $"yüz{wordSeparator}";
+
+                if (int.Parse(group[1].ToString()) > 0)
+                    result += digits_second[int.Parse(group[1].ToString())] + wordSeparator;
+
+                if (int.Parse(group[2].ToString()) > 0 && !(num.Length == 4 && index == 0 && int.Parse(group[2].ToString()) <= 1))
+                    result += digits[int.Parse(group[2].ToString())] + wordSeparator;
+
+                if (int.Parse(group) > 1)
+                    result += $"{exponent[groupIndex]}{wordSeparator}";
+
+                index++;
+                groupIndex--;
+            }
+
+            return result;
+        }
+
+        public string ToCurrencyWords(decimal currency, string currencyCode)
+        {
+            bool hasFraction = (currency % 1) != 0;
+
+            currencyCode = currencyCode.ToUpper();
+            if (!currencyNames.ContainsKey(currencyCode))
+                throw new NotSupportedException($"Currency {currencyCode} is not available for this language!");
+
+            var currencyName = currencyNames[currencyCode];
+            string result = ToWords((int)currency).Trim();
+
+            if (currency != 1m)
+            {
+                result += $"{wordSeparator}{currencyName.Value}";
+            }
+            else
+            {
+                result += $"{wordSeparator}{currencyName.Key}";
+            }
+
+            if (hasFraction)
+            {
+                var fraction = new string((currency - (int)currency).ToString().Where(char.IsDigit).ToArray());
+                result += $"{wordSeparator}{ToWords(int.Parse(fraction)).Trim()}";
+
+                if (int.Parse(fraction) != 1)
+                {
+                    result += $"{wordSeparator}{currencyName.Value}";
+                }
+                else
+                {
+                    result += $"{wordSeparator}{currencyName.Key}";
+                }
+            }
 
             return result;
         }
