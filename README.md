@@ -2,6 +2,14 @@
 
 .Net Standard 2.1 package for converting number or currency values to Turkish words.
 
+### Build Status
+| Build server    | Platform       | Status      |
+|-----------------|----------------|-------------|
+| Azure CI Pipelines  | All            |![](https://dev.azure.com/fsefacan/NumberToWords/_apis/build/status/sefacan.NumberToWords?branchName=master) |
+| Github Actions  | All            |![](https://github.com/sefacan/NumberToWords/workflows/ASP.NET%20Core%20CI/badge.svg) |
+| Travis CI       | Linux  |![](https://travis-ci.org/sefacan/NumberToWords.svg?branch=master) |
+
+
 ### Usage
 
 ``` csharp
