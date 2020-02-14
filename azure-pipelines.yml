@@ -7,7 +7,7 @@ trigger:
 - master
 
 variables:
-  netCoreSdkVersion: '3.1.100'
+  netCoreSdkVersion: '3.1.101'
 
 jobs:
 - job: Linux
