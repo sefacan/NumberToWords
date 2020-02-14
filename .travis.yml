@@ -9,4 +9,4 @@ script:
 - dotnet test
 - dotnet build ./NumberToWords.sln -c Release
 - dotnet pack -c Release --no-build -o ./packages
-- dotnet nuget push ./packages/NumberToWords.*.nupkg --api-key $NUGETKEY --source https://api.nuget.org/v3/index.json
+- dotnet nuget push ./packages/NumberToWords.*.nupkg -k $NUGETKEY -s https://api.nuget.org/v3/index.json
