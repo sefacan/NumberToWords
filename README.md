@@ -9,6 +9,21 @@
 | Github Actions  | All            |![](https://github.com/sefacan/NumberToWords/workflows/.NET%20Core%20CI/badge.svg) |
 | Travis CI       | Linux  |![](https://travis-ci.org/sefacan/NumberToWords.svg?branch=master) |
 
+## Installation
+
+Install the [NumberToWords NuGet Package](https://www.nuget.org/packages/Number2Words).
+
+### Package Manager Console
+
+```
+Install-Package Number2Words
+```
+
+### .NET Core CLI
+
+```
+dotnet add package Number2Words
+```
 
 ### Usage
 
