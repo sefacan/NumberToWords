@@ -143,10 +143,10 @@ namespace NumberToWords.Transformers
                 if (int.Parse(group[1].ToString()) > 0)
                     result += digits_second[int.Parse(group[1].ToString())] + wordSeparator;
 
-                if (int.Parse(group[2].ToString()) > 0 && !(num.Length == 4 && index == 0 && int.Parse(group[2].ToString()) <= 1))
+                if (int.Parse(group[2].ToString()) > 0 && !(num.Length == 4 && index == 0 && int.Parse(group[2].ToString()) <= 1) && (groupIndex == 1 ? int.Parse(group[2].ToString()) != 1 : true))
                     result += digits[int.Parse(group[2].ToString())] + wordSeparator;
 
-                if (int.Parse(group) > 1)
+                if (int.Parse(group) >= 1)
                     result += $"{exponent[groupIndex]}{wordSeparator}";
 
                 index++;

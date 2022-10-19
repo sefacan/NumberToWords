@@ -52,5 +52,81 @@ namespace NumberToWords.Tests
 
             Assert.Equal("YÜZ YİRMİ ÜÇ MİLYON DÖRT YÜZ ELLİ ALTI BİN YEDİ YÜZ SEKSEN DOKUZ", result.ToUpper());
         }
+
+        [Fact]
+        public void Convert_Currency1000_ToWords()
+        {
+            var transformerFactory = new TransformerFactory();
+            var transformer = transformerFactory.Create("tr");
+            var result = transformer.ToCurrencyWords(1180m, "TRY");
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("tr-TR");
+
+            Assert.Equal("BİN YÜZ SEKSEN TÜRK LİRASI", result.ToUpper());
+        }
+
+
+        [Fact]
+        public void Convert_Currency2180_ToWords()
+        {
+            var transformerFactory = new TransformerFactory();
+            var transformer = transformerFactory.Create("tr");
+            var result = transformer.ToCurrencyWords(2180m, "TRY");
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("tr-TR");
+
+            Assert.Equal("İKİ BİN YÜZ SEKSEN TÜRK LİRASI", result.ToUpper());
+        }
+
+        [Fact]
+        public void Convert_Currency10180_ToWords()
+        {
+            var transformerFactory = new TransformerFactory();
+            var transformer = transformerFactory.Create("tr");
+            var result = transformer.ToCurrencyWords(10180.26m, "TRY");
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("tr-TR");
+
+            Assert.Equal("ON BİN YÜZ SEKSEN TÜRK LİRASI YİRMİ ALTI KURUŞ", result.ToUpper());
+        }
+
+
+        [Fact]
+        public void Convert_Currency100180_ToWords()
+        {
+            var transformerFactory = new TransformerFactory();
+            var transformer = transformerFactory.Create("tr");
+            var result = transformer.ToCurrencyWords(100180.26m, "TRY");
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("tr-TR");
+
+            Assert.Equal("YÜZ BİN YÜZ SEKSEN TÜRK LİRASI YİRMİ ALTI KURUŞ", result.ToUpper());
+        }
+
+        [Fact]
+        public void Convert_Currency500180_ToWords()
+        {
+            var transformerFactory = new TransformerFactory();
+            var transformer = transformerFactory.Create("tr");
+            var result = transformer.ToCurrencyWords(500180.26m, "TRY");
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("tr-TR");
+
+            Assert.Equal("BEŞ YÜZ BİN YÜZ SEKSEN TÜRK LİRASI YİRMİ ALTI KURUŞ", result.ToUpper());
+        }
+
+
+
+        [Fact]
+        public void Convert_Currency1000180_ToWords()
+        {
+            var transformerFactory = new TransformerFactory();
+            var transformer = transformerFactory.Create("tr");
+            var result = transformer.ToCurrencyWords(1000180.26m, "TRY");
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("tr-TR");
+
+            Assert.Equal("BİR MİLYON YÜZ SEKSEN TÜRK LİRASI YİRMİ ALTI KURUŞ", result.ToUpper());
+        }
     }
 }
