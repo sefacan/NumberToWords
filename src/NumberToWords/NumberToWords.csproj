@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Description>.Net Standard 2.1 package for converting number or currency values to Turkish words</Description>
+    <TargetFramework>net6.0</TargetFramework>
+    <Description>.Net 6 package for converting number or currency values to Turkish words</Description>
     <Version>1.1.5</Version>
     <AssemblyName>Number2Words</AssemblyName>
     <RootNamespace>Number2Words</RootNamespace>
